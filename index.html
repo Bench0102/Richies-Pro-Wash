@@ -829,7 +829,7 @@
                         <img src="Images/fence2.jpeg" alt="Fence Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
                     <button onclick="changeImage(3)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
-                        <img src="Images/After_3.png" alt="Soft Washing" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                        <img src="Images/roof1.jpeg" alt="Soft Washing" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
                     <button onclick="changeImage(4)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
                         <img src="Images/After_2.png" alt="Driveway Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
@@ -838,7 +838,7 @@
                         <img src="Images/patio_2.png" alt="Surface Restoration" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
                     <button onclick="changeImage(6)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
-                        <img src="Images/roof1.jpeg" alt="Roof Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                        <img src="Images/After_1.png" alt="Roof Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
                 </div>
             </div>
@@ -1672,9 +1672,9 @@
                     beforeImage.src = 'Images/fence1.jpeg';
                     afterImage.src = 'Images/fence2.jpeg';
                 } else if (imageNumber === 3) {
-                    // Soft washing: before_3 (before) -> after_3 (after)
-                    beforeImage.src = 'Images/Before_3.png';
-                    afterImage.src = 'Images/After_3.png';
+                    // Soft washing: roof2 (before) -> roof1 (after) - SWAPPED
+                    beforeImage.src = 'Images/roof2.jpeg';
+                    afterImage.src = 'Images/roof1.jpeg';
                 } else if (imageNumber === 4) {
                     // Driveway cleaning: before_2 (before) -> after_2 (after)
                     beforeImage.src = 'Images/Before_2.png';
@@ -1684,9 +1684,9 @@
                     beforeImage.src = 'Images/patio_1.png';
                     afterImage.src = 'Images/patio_2.png';
                 } else if (imageNumber === 6) {
-                    // Roof Cleaning: roof2 (before) -> roof1 (after)
-                    beforeImage.src = 'Images/roof2.jpeg';
-                    afterImage.src = 'Images/roof1.jpeg';
+                    // Roof Cleaning: before_3 (before) -> after_3 (after) - SWAPPED
+                    beforeImage.src = 'Images/Before_1.png';
+                    afterImage.src = 'Images/After_1.png';
                 }
                 
                 // Fade images back in
