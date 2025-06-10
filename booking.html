@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Service - Richies Pro Wash | Professional Pressure Washing in Savannah, GA</title>
+    <meta name="description" content="Book professional pressure washing services in Savannah, GA. House washing, roof cleaning, driveway cleaning and more. Get 20% off your first service!">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .water-bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 15s infinite ease-in-out;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+            }
+            100% {
+                transform: translateY(0) rotate(360deg);
+            }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .bubble-button {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bubble-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%, -50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .bubble-button:hover::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(25, 25);
+                opacity: 0;
+            }
+        }
+        
+        /* Calendar Styles */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .calendar-day {
+            background: white;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .calendar-day:hover {
+            background: #dbeafe;
+        }
+        
+        .calendar-day.available {
+            background: #dcfce7;
+            color: #166534;
+        }
+        
+        .calendar-day.available:hover {
+            background: #bbf7d0;
+        }
+        
+        .calendar-day.unavailable {
+            background: #fee2e2;
+            color: #991b1b;
+            cursor: not-allowed;
+        }
+        
+        .calendar-day.selected {
+            background: #121F41;
+            color: white;
+        }
+        
+        .calendar-header {
+            background: #121F41;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .hidden { display: none; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen relative overflow-x-hidden">
+    <!-- Background Bubbles -->
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="water-bubble w-32 h-32 bg-blue-300 top-20 left-10" style="animation-delay: 0s;"></div>
+        <div class="water-bubble w-24 h-24 bg-yellow-300 bottom-20 left-20" style="animation-delay: 2s;"></div>
+        <div class="water-bubble w-20 h-20 bg-blue-400 top-40 right-20" style="animation-delay: 4s;"></div>
+        <div class="water-bubble w-16 h-16 bg-yellow-400 bottom-40 right-40" style="animation-delay: 6s;"></div>
+        <div class="water-bubble w-12 h-12 bg-blue-200 top-60 left-1/3" style="animation-delay: 8s;"></div>
+        <div class="water-bubble w-28 h-28 bg-yellow-200 top-1/2 right-1/4" style="animation-delay: 10s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed w-full bg-[#121F41] text-white shadow-lg z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="h-12 w-12 rounded-full flex items-center justify-center overflow-hidden">
+                        <img src="Images/LOGO_Icon.jpg" alt="Richies Pro Wash Logo" class="w-full h-full object-cover">
+                    </div>
+                    <h1 class="ml-3 text-xl font-bold">Richies Pro Wash</h1>
+                </div>
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white hover:text-blue-300 px-3 py-2 font-medium transition">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-24 relative z-10">
+        <!-- Services Section -->
+        <div id="services-section">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-[#121F41] mb-4">
+                    <i class="fas fa-spray-can mr-3"></i>Book Your Pressure Washing Service
+                </h1>
+                <p class="text-gray-700 text-lg">Choose your perfect cleaning package and let's make your property shine!</p>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
+            </div>
+
+            <!-- Service Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- House Washing -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover transition-all duration-300 border-2 border-blue-100">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-home text-[#121F41] text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#121F41] mb-2">House Washing</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-2">Starting at $150</div>
+                        <p class="text-gray-700">Professional soft washing for your home's exterior</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-[#121F41] mb-3">Includes:</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Siding, brick & stucco cleaning</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mildew & algae removal</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Eco-friendly cleaning solutions</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="selectService('house-washing', 150, 'House Washing')" 
+                            class="w-full bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 rounded-full font-bold transition duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i>BOOK NOW
+                    </button>
+                </div>
+
+                <!-- Roof Washing -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover transition-all duration-300 border-2 border-blue-100">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-home text-[#121F41] text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#121F41] mb-2">Roof Washing</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-2">Starting at $200</div>
+                        <p class="text-gray-700">Safe roof cleaning & moss removal</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-[#121F41] mb-3">Includes:</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Moss & algae removal</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Soft washing technique</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Gutter cleaning included</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="selectService('roof-washing', 200, 'Roof Washing')" 
+                            class="w-full bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 rounded-full font-bold transition duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i>BOOK NOW
+                    </button>
+                </div>
+
+                <!-- Driveway Cleaning -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover transition-all duration-300 border-2 border-blue-100">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-road text-[#121F41] text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#121F41] mb-2">Driveway Cleaning</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-2">Starting at $100</div>
+                        <p class="text-gray-700">High-pressure concrete & asphalt cleaning</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-[#121F41] mb-3">Includes:</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Oil stain removal</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Concrete restoration</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Walkway cleaning</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="selectService('driveway-cleaning', 100, 'Driveway Cleaning')" 
+                            class="w-full bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 rounded-full font-bold transition duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i>BOOK NOW
+                    </button>
+                </div>
+
+                <!-- Patio Cleaning -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover transition-all duration-300 border-2 border-blue-100">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-umbrella-beach text-[#121F41] text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#121F41] mb-2">Patio Cleaning</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-2">Starting at $80</div>
+                        <p class="text-gray-700">Deck, patio & outdoor space cleaning</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-[#121F41] mb-3">Includes:</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Deck & patio surfaces</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Outdoor furniture cleaning</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Mold & mildew removal</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="selectService('patio-cleaning', 80, 'Patio Cleaning')" 
+                            class="w-full bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 rounded-full font-bold transition duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i>BOOK NOW
+                    </button>
+                </div>
+
+                <!-- Gutter Brightening -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover transition-all duration-300 border-2 border-blue-100">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-tint text-[#121F41] text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#121F41] mb-2">Gutter Brightening</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-2">Starting at $120</div>
+                        <p class="text-gray-700">Gutter cleaning & exterior brightening</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-[#121F41] mb-3">Includes:</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Gutter exterior cleaning</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Oxidation removal</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Downspout cleaning</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="selectService('gutter-brightening', 120, 'Gutter Brightening')" 
+                            class="w-full bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 rounded-full font-bold transition duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i>BOOK NOW
+                    </button>
+                </div>
+
+                <!-- Fence Cleaning -->
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover transition-all duration-300 border-2 border-blue-100">
+                    <div class="text-center mb-6">
+                        <div class="bg-blue-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <i class="fas fa-border-style text-[#121F41] text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-[#121F41] mb-2">Fence Cleaning</h3>
+                        <div class="text-3xl font-bold text-blue-600 mb-2">Starting at $90</div>
+                        <p class="text-gray-700">Wood, vinyl & metal fence restoration</p>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-[#121F41] mb-3">Includes:</h4>
+                        <ul class="space-y-2 text-sm text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>All fence materials</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Stain & dirt removal</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Gate cleaning included</li>
+                        </ul>
+                    </div>
+                    
+                    <button onclick="selectService('fence-cleaning', 90, 'Fence Cleaning')" 
+                            class="w-full bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 rounded-full font-bold transition duration-300">
+                        <i class="fas fa-calendar-check mr-2"></i>BOOK NOW
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Booking Form Section -->
+        <div id="booking-section" class="hidden">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-[#121F41] text-white p-6">
+                        <h2 class="text-3xl font-bold text-center">
+                            <i class="fas fa-calendar-alt mr-3"></i>Book Your <span id="selected-service-name">Service</span>
+                        </h2>
+                        <p class="text-center mt-2 text-blue-200">Fill out the details below to schedule your appointment</p>
+                    </div>
+                    
+                    <div class="p-8">
+                        <form id="booking-form" class="space-y-6">
+                            <!-- Service Summary -->
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h3 class="font-bold text-[#121F41] mb-2">Service Summary</h3>
+                                <div class="flex justify-between items-center">
+                                    <span id="service-summary">House Washing</span>
+                                    <span class="font-bold text-blue-600" id="service-price">$150</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Personal Information -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-[#121F41] font-medium mb-2">First Name *</label>
+                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-[#121F41] font-medium mb-2">Last Name *</label>
+                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-[#121F41] font-medium mb-2">Email *</label>
+                                    <input type="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-[#121F41] font-medium mb-2">Phone Number *</label>
+                                    <input type="tel" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                            </div>
+                            
+                            <!-- Address -->
+                            <div>
+                                <label class="block text-[#121F41] font-medium mb-2">Service Address *</label>
+                                <input type="text" required placeholder="Street Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-3">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <input type="text" required placeholder="City" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <input type="text" required placeholder="State" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <input type="text" required placeholder="ZIP Code" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                </div>
+                            </div>
+                            
+                            <!-- Calendar -->
+                            <div>
+                                <label class="block text-[#121F41] font-medium mb-4">Preferred Date *</label>
+                                <div class="calendar-container">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <button type="button" id="prev-month" class="p-2 text-[#121F41] hover:bg-blue-100 rounded">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <h3 id="calendar-month" class="text-lg font-bold text-[#121F41]"></h3>
+                                        <button type="button" id="next-month" class="p-2 text-[#121F41] hover:bg-blue-100 rounded">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                    <div class="calendar" id="calendar"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Time Preference -->
+                            <div>
+                                <label class="block text-[#121F41] font-medium mb-2">Preferred Time</label>
+                                <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option>Morning (8:00 AM - 12:00 PM)</option>
+                                    <option>Afternoon (12:00 PM - 5:00 PM)</option>
+                                    <option>No Preference</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Special Instructions -->
+                            <div>
+                                <label class="block text-[#121F41] font-medium mb-2">Special Instructions</label>
+                                <textarea rows="4" placeholder="Any special instructions or areas of concern..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            </div>
+                            
+                            <!-- Discount Notice -->
+                            <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-500 mr-2"></i>
+                                    <span class="font-bold text-yellow-800">Special Offer: Get 20% off House & Roof Washes!</span>
+                                </div>
+                                <p class="text-yellow-700 mt-1 text-sm">Just leave us a 5-star Google review after service completion.</p>
+                            </div>
+                            
+                            <!-- Submit Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                                <button type="button" onclick="goBackToServices()" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-3 px-6 rounded-full font-bold transition duration-300">
+                                    <i class="fas fa-arrow-left mr-2"></i>Back to Services
+                                </button>
+                                <button type="submit" class="flex-1 bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 px-6 rounded-full font-bold transition duration-300">
+                                    <i class="fas fa-check mr-2"></i>Book Service
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#121F41] text-white py-12 mt-16 relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="Images/LOGO_Icon.jpg" alt="Richies Pro Wash Logo" class="h-12 w-12 rounded-full mr-3">
+                        <h3 class="text-xl font-bold">Richies Pro Wash</h3>
+                    </div>
+                    <p class="text-blue-200">Professional pressure washing services in Savannah and surrounding areas.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Contact Info</h4>
+                    <div class="space-y-2 text-blue-200">
+                        <p><i class="fas fa-phone mr-2"></i>(912) 675-9231</p>
+                        <p><i class="fas fa-envelope mr-2"></i>info@richiesprowash.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Savannah, GA</p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Our Services</h4>
+                    <ul class="space-y-2 text-blue-200">
+                        <li>House Washing</li>
+                        <li>Roof Washing</li>
+                        <li>Driveway Cleaning</li>
+                        <li>Patio Cleaning</li>
+                        <li>Gutter Brightening</li>
+                        <li>Fence Cleaning</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-blue-800 mt-8 pt-8 text-center text-blue-200">
+                <p>&copy; 2024 Richies Pro Wash. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let selectedService = null;
+        let selectedDate = null;
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+        
+        function selectService(serviceType, price, serviceName) {
+            selectedService = { type: serviceType, price: price, name: serviceName };
+            
+            // Update booking form
+            document.getElementById('selected-service-name').textContent = serviceName;
+            document.getElementById('service-summary').textContent = serviceName;
+            document.getElementById('service-price').textContent = `$${price}`;
+            
+            // Show booking section
+            document.getElementById('services-section').classList.add('hidden');
+            document.getElementById('booking-section').classList.remove('hidden');
+            
+            // Initialize calendar
+            generateCalendar();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function goBackToServices() {
+            document.getElementById('booking-section').classList.add('hidden');
+            document.getElementById('services-section').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function generateCalendar() {
+            const calendar = document.getElementById('calendar');
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            document.getElementById('calendar-month').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+            
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const today = new Date();
+            
+            calendar.innerHTML = '';
+            
+            // Add day headers
+            const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-header';
+                header.textContent = day;
+                calendar.appendChild(header);
+            });
+            
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day';
+                calendar.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                const dayDate = new Date(currentYear, currentMonth, day);
+                
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                
+                // Disable past dates
+                if (dayDate < today.setHours(0, 0, 0, 0)) {
+                    dayElement.classList.add('unavailable');
+                } else {
+                    dayElement.classList.add('available');
+                    dayElement.addEventListener('click', () => selectDate(dayDate, dayElement));
+                }
+                
+                calendar.appendChild(dayElement);
+            }
+        }
+        
+        function selectDate(date, element) {
+            // Remove previous selection
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+                day.classList.add('available');
+            });
+            
+            // Add selection to clicked date
+            element.classList.remove('available');
+            element.classList.add('selected');
+            selectedDate = date;
+        }
+        
+        document.getElementById('prev-month').addEventListener('click', () => {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar();
+        });
+        
+        document.getElementById('next-month').addEventListener('click', () => {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar();
+        });
+        
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!selectedDate) {
+                alert('Please select a date for your service.');
+                return;
+            }
+            
+            // Here you would typically send the form data to your server
+            alert('Thank you for your booking! We will contact you shortly to confirm your appointment.');
+            
+            // Reset form
+            this.reset();
+            goBackToServices();
+        });
+        
+        // Initialize calendar on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            generateCalendar();
+        });
+    </script>
+</body>
+</html>

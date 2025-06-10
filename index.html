@@ -420,6 +420,40 @@
         nav a.active::after {
             width: 100%;
         }
+        
+        /* Service image hover glow effect */
+        .service-image-glow {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        
+        .service-image-glow::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: linear-gradient(45deg, 
+                rgba(79, 195, 247, 0.6), 
+                rgba(33, 150, 243, 0.4), 
+                rgba(79, 195, 247, 0.6));
+            border-radius: 1rem;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(8px);
+        }
+        
+        .service-image-glow:hover::before {
+            opacity: 1;
+        }
+        
+        .service-image-glow:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px -12px rgba(79, 195, 247, 0.25), 
+                        0 0 30px rgba(79, 195, 247, 0.3);
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -503,7 +537,7 @@
                         Professional pressure washing services in Savannah and surrounding areas
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 pt-4">
-                        <a href="#contact" class="bubble-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">
+                        <a href="booking.html" class="bubble-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">
                             Book Now
                         </a>
                         <a href="#contact" class="bubble-button bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">
@@ -528,6 +562,15 @@
                             <div class="hero-slide min-w-full">
                                 <img src="Images/After_4.png" alt="Complete Property Cleaning Result" class="w-full h-[300px] md:h-[350px] object-cover">
                             </div>
+                            <div class="hero-slide min-w-full">
+                                <img src="Images/roof1.jpeg" alt="Professional Roof Cleaning" class="w-full h-[300px] md:h-[350px] object-cover">
+                            </div>
+                            <div class="hero-slide min-w-full">
+                                <img src="Images/fence2.jpeg" alt="Fence Cleaning Service" class="w-full h-[300px] md:h-[350px] object-cover">
+                            </div>
+                            <div class="hero-slide min-w-full">
+                                <img src="Images/roof_washing1.jpg" alt="Roof Washing Excellence" class="w-full h-[300px] md:h-[350px] object-cover">
+                            </div>
                         </div>
                         
                         <!-- Navigation Arrows -->
@@ -544,6 +587,9 @@
                             <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300 hover:scale-125" data-slide="1"></button>
                             <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300 hover:scale-125" data-slide="2"></button>
                             <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300 hover:scale-125" data-slide="3"></button>
+                            <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300 hover:scale-125" data-slide="4"></button>
+                            <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300 hover:scale-125" data-slide="5"></button>
+                            <button class="hero-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition duration-300 hover:scale-125" data-slide="6"></button>
                         </div>
                         
                         <!-- Quality Badge -->
@@ -565,23 +611,23 @@
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-[#121F41]">Our Services</h2>
             
             <!-- Service Navigation Buttons -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="showService('house-washing')" class="service-btn active px-6 py-3 bg-[#1565C0] text-white rounded-full font-medium hover:bg-[#0D47A1] transition duration-300" data-service="house-washing">
+            <div class="flex flex-col md:flex-row md:flex-nowrap md:justify-center gap-3 md:gap-4 mb-12 max-w-7xl mx-auto px-4">
+                <button onclick="showService('house-washing')" class="service-btn active px-4 md:px-6 py-3 bg-[#1565C0] text-white rounded-full font-medium hover:bg-[#0D47A1] transition duration-300 text-sm md:text-base whitespace-nowrap min-h-[48px]" data-service="house-washing">
                     HOUSE WASHING
                 </button>
-                <button onclick="showService('roof-washing')" class="service-btn px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300" data-service="roof-washing">
+                <button onclick="showService('roof-washing')" class="service-btn px-4 md:px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300 text-sm md:text-base whitespace-nowrap min-h-[48px]" data-service="roof-washing">
                     ROOF WASHING
                 </button>
-                <button onclick="showService('driveway-cleaning')" class="service-btn px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300" data-service="driveway-cleaning">
+                <button onclick="showService('driveway-cleaning')" class="service-btn px-4 md:px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300 text-sm md:text-base whitespace-nowrap min-h-[48px]" data-service="driveway-cleaning">
                     DRIVEWAY CLEANING
                 </button>
-                <button onclick="showService('patio-cleaning')" class="service-btn px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300" data-service="patio-cleaning">
+                <button onclick="showService('patio-cleaning')" class="service-btn px-4 md:px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300 text-sm md:text-base whitespace-nowrap min-h-[48px]" data-service="patio-cleaning">
                     PATIO CLEANING
                 </button>
-                <button onclick="showService('gutter-brightening')" class="service-btn px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300" data-service="gutter-brightening">
+                <button onclick="showService('gutter-brightening')" class="service-btn px-4 md:px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300 text-sm md:text-base whitespace-nowrap min-h-[48px]" data-service="gutter-brightening">
                     GUTTER BRIGHTENING
                 </button>
-                <button onclick="showService('fence-cleaning')" class="service-btn px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300" data-service="fence-cleaning">
+                <button onclick="showService('fence-cleaning')" class="service-btn px-4 md:px-6 py-3 bg-gray-600 text-white rounded-full font-medium hover:bg-gray-700 transition duration-300 text-sm md:text-base whitespace-nowrap min-h-[48px]" data-service="fence-cleaning">
                     FENCE CLEANING
                 </button>
             </div>
@@ -603,7 +649,7 @@
                         <div class="relative">
                             <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#4FC3F7] opacity-20 rounded-full"></div>
                             <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-200 opacity-30 rounded-full"></div>
-                            <img src="Images/After_3.png" alt="House washing service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-lg">
+                            <img src="Images/house-wash.webp" alt="House washing service" class="service-image-glow relative z-10 w-full h-96 md:h-[500px] object-contain rounded-xl shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -616,14 +662,14 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Extend your roof's lifespan and improve your home's curb appeal with our specialized roof washing service. We safely remove harmful algae, moss, and lichen that can damage your shingles. Our gentle yet effective process protects your roof while restoring its original appearance.
                             </p>
-                            <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                            <a href="booking.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
                                 Book Now
                             </a>
                         </div>
                         <div class="relative">
                             <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#4FC3F7] opacity-20 rounded-full"></div>
                             <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-200 opacity-30 rounded-full"></div>
-                            <img src="Images/After_1.png" alt="Roof washing service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-lg">
+                            <img src="Images/roof_washing.jpg" alt="Roof washing service" class="service-image-glow relative z-10 w-full h-96 md:h-[500px] object-contain rounded-xl shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -636,14 +682,14 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Restore your driveway's original beauty with our professional cleaning service. We remove oil stains, tire marks, dirt, and grime from concrete, asphalt, and paver driveways. Our powerful yet safe cleaning methods will make your driveway look like new again.
                             </p>
-                            <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                            <a href="booking.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
                                 Book Now
                             </a>
                         </div>
                         <div class="relative">
                             <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#4FC3F7] opacity-20 rounded-full"></div>
                             <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-200 opacity-30 rounded-full"></div>
-                            <img src="Images/After_2.png" alt="Driveway cleaning service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-lg">
+                            <img src="Images/drive_way.jpg" alt="Driveway cleaning service" class="service-image-glow relative z-10 w-full h-96 md:h-[500px] object-contain rounded-xl shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -656,14 +702,14 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Revitalize your outdoor living space with our comprehensive patio cleaning service. We clean concrete, stone, brick, and composite patios, removing dirt, algae, mold, and stains. Our thorough process will restore your patio's beauty and make it a welcoming space for entertaining.
                             </p>
-                            <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                            <a href="booking.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
                                 Book Now
                             </a>
                         </div>
                         <div class="relative">
                             <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#4FC3F7] opacity-20 rounded-full"></div>
                             <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-200 opacity-30 rounded-full"></div>
-                            <img src="Images/Patio-clean.jpg" alt="Patio cleaning service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-lg">
+                            <img src="Images/patio_clean.png" alt="Patio cleaning service" class="service-image-glow relative z-10 w-full h-96 md:h-[500px] object-contain rounded-xl shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -676,14 +722,14 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Restore your gutters' original appearance with our specialized brightening service. We remove oxidation, tiger stripes, and discoloration from aluminum and vinyl gutters. This service dramatically improves your home's curb appeal by making your gutters look brand new.
                             </p>
-                            <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                            <a href="booking.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
                                 Book Now
                             </a>
                         </div>
                         <div class="relative">
                             <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#4FC3F7] opacity-20 rounded-full"></div>
                             <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-200 opacity-30 rounded-full"></div>
-                            <img src="Images/Gutter.jpg" alt="Gutter brightening service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-lg">
+                            <img src="Images/gutter_cleaning.webp" alt="Gutter brightening service" class="service-image-glow relative z-10 w-full h-96 md:h-[500px] object-contain rounded-xl shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -696,14 +742,14 @@
                             <p class="text-lg mb-6 leading-relaxed">
                                 Protect and beautify your fence with our professional cleaning service. We safely clean wood, vinyl, aluminum, and composite fencing, removing dirt, mildew, algae, and stains. Our gentle approach preserves your fence material while restoring its original appearance.
                             </p>
-                            <a href="#contact" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                            <a href="booking.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
                                 Book Now
                             </a>
                         </div>
                         <div class="relative">
                             <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#4FC3F7] opacity-20 rounded-full"></div>
                             <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-200 opacity-30 rounded-full"></div>
-                            <img src="Images/fence.jpg" alt="Fence cleaning service" class="relative z-10 w-full h-80 object-cover rounded-xl shadow-lg">
+                            <img src="Images/fence_cleaning.jpeg" alt="Fence cleaning service" class="service-image-glow relative z-10 w-full h-96 md:h-[500px] object-contain rounded-xl shadow-lg">
                         </div>
                     </div>
                 </div>
@@ -743,50 +789,56 @@
                     <!-- Before/After Images Container -->
                     <div class="relative w-full h-96 md:h-[500px]">
                         <!-- After Image (Background) -->
-                        <img id="after-image" src="Images/After_1.png" alt="After cleaning" class="w-full h-full object-cover">
+                        <img id="after-image" src="Images/roof_washing1.jpg" alt="After cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                         
                         <!-- Before Image (Overlay) -->
-                        <div id="before-overlay" class="absolute inset-0 overflow-hidden" style="width: 50%;">
-                            <img id="before-image" src="Images/Before_1.png" alt="Before cleaning" class="w-full h-full object-cover">
+                        <div id="before-overlay" class="absolute inset-0 overflow-hidden transition-all duration-150 ease-out" style="width: 50%;">
+                            <img id="before-image" src="Images/roof_washing2.jpg" alt="Before cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                         </div>
                         
                         <!-- Slider Handle -->
-                        <div id="slider-handle" class="absolute top-0 h-full w-1 bg-white cursor-ew-resize z-10" style="left: 50%;">
+                        <div id="slider-handle" class="absolute top-0 h-full w-1 bg-white cursor-ew-resize z-10 transition-all duration-150 ease-out" style="left: 50%;">
                             <!-- Circular Handle -->
-                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border-4 border-blue-500 flex items-center justify-center overflow-hidden">
+                            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border-4 border-blue-500 flex items-center justify-center overflow-hidden transition-all duration-200 ease-out hover:scale-110 hover:shadow-xl">
                                 <img src="Images/LOGO_Icon.jpg" alt="Richies Pro Wash Logo" class="w-full h-full object-cover">
                             </div>
                         </div>
                         
                         <!-- Labels -->
-                        <div class="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ease-out">
                             BEFORE
                         </div>
-                        <div class="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        <div class="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium transition-all duration-300 ease-out">
                             AFTER
                         </div>
                     </div>
                     
                     <!-- Service Title -->
                     <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                        <h3 id="service-title" class="text-2xl font-bold text-white mb-2">SOFT WASHING</h3>
-                        <p id="service-description" class="text-white/90">Professional soft washing removes dirt, mildew, and stains without damaging your property</p>
+                        <h3 id="service-title" class="text-2xl font-bold text-white mb-2 transition-all duration-300 ease-out">SOFT WASHING</h3>
+                        <p id="service-description" class="text-white/90 transition-all duration-300 ease-out">Professional soft washing removes dirt, mildew, and stains without damaging your property</p>
                     </div>
                 </div>
                 
                 <!-- Navigation Thumbnails -->
                 <div class="flex justify-center mt-8 space-x-4">
-                    <button onclick="changeImage(1)" class="thumbnail-btn active w-20 h-20 rounded-lg overflow-hidden border-3 border-white opacity-100">
-                        <img src="Images/After_1.png" alt="Project 1" class="w-full h-full object-cover">
+                    <button onclick="changeImage(1)" class="thumbnail-btn active w-20 h-20 rounded-lg overflow-hidden border-3 border-white opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/After_1.png" alt="Project 1" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
-                    <button onclick="changeImage(2)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition">
-                        <img src="Images/After_2.png" alt="Project 2" class="w-full h-full object-cover">
+                    <button onclick="changeImage(2)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/After_2.png" alt="Project 2" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
-                    <button onclick="changeImage(3)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition">
-                        <img src="Images/After_3.png" alt="Project 3" class="w-full h-full object-cover">
+                    <button onclick="changeImage(3)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/After_3.png" alt="Project 3" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
-                    <button onclick="changeImage(4)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition">
-                        <img src="Images/After_4.png" alt="Project 4" class="w-full h-full object-cover">
+                    <button onclick="changeImage(4)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/After_4.png" alt="Project 4" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                    </button>
+                    <button onclick="changeImage(5)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/fence2.jpeg" alt="Fence Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                    </button>
+                    <button onclick="changeImage(6)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/roof_washing1.jpg" alt="Roof Washing" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
                 </div>
             </div>
@@ -799,37 +851,37 @@
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#121F41]">About Richies Pro Wash</h2>
                 
-                <div class="bg-[#121F41] text-white rounded-xl p-8 md:p-12 shadow-md">
+                <div class="bg-[#121F41] text-white rounded-xl p-6 md:p-12 shadow-md">
                     <div class="space-y-6">
-                        <div class="flex items-start gap-8">
-                            <div class="flex-shrink-0">
-                                <img src="Images/LOGO_Icon.jpg" alt="Richies Pro Wash Logo" class="w-32 h-24  object-cover">
+                        <div class="flex items-start gap-4 md:gap-8">
+                            <div class="flex-shrink-0 hidden md:block">
+                                <img src="Images/LOGO_Icon.jpg" alt="Richies Pro Wash Logo" class="w-32 h-24 object-cover">
                             </div>
-                            <div class="border-l-4 border-blue-600 pl-6">
-                                <p class="text-lg leading-relaxed">
+                            <div class="md:border-l-4 md:border-blue-600 md:pl-6 w-full">
+                                <p class="text-base md:text-lg leading-relaxed">
                                     At Richies Pro Wash, we're more than just a cleaning service — we're exterior cleaning professionals committed to excellence. With a focus on quality, care, and customer satisfaction, our team delivers expert pressure washing solutions that restore the beauty of your home while protecting your property.
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="grid md:grid-cols-2 gap-8 mt-8">
-                            <div class="bg-white/10 rounded-lg p-6 shadow-sm">
-                                <h3 class="text-xl font-bold text-blue-300 mb-4">Professional Expertise</h3>
-                                <p class="text-white/90">
+                        <div class="grid md:grid-cols-2 gap-6 md:gap-8 mt-6 md:mt-8">
+                            <div class="bg-white/10 rounded-lg p-4 md:p-6 shadow-sm">
+                                <h3 class="text-lg md:text-xl font-bold text-blue-300 mb-3 md:mb-4">Professional Expertise</h3>
+                                <p class="text-white/90 text-sm md:text-base">
                                     Every job is handled with precision and professionalism, whether we're cleaning roofs, siding, gutters, or driveways. We use the latest soft-wash and pressure-washing techniques to ensure safe, effective results — without damage.
                                 </p>
                             </div>
                             
-                            <div class="bg-white/10 rounded-lg p-6 shadow-sm">
-                                <h3 class="text-xl font-bold text-blue-300 mb-4">Local Community Focus</h3>
-                                <p class="text-white/90">
+                            <div class="bg-white/10 rounded-lg p-4 md:p-6 shadow-sm">
+                                <h3 class="text-lg md:text-xl font-bold text-blue-300 mb-3 md:mb-4">Local Community Focus</h3>
+                                <p class="text-white/90 text-sm md:text-base">
                                     Based in Savannah, Georgia, we take pride in serving our local community with reliable, honest service. From the moment you call to the final rinse, you can trust us to treat your home with the same respect and attention to detail we'd give our own.
                                 </p>
                             </div>
                         </div>
                         
-                        <div class="text-center mt-8">
-                            <p class="text-xl font-semibold text-white">
+                        <div class="text-center mt-6 md:mt-8">
+                            <p class="text-lg md:text-xl font-semibold text-white">
                                 Let us help you bring back the shine — the right way.
                             </p>
                         </div>
@@ -1045,7 +1097,7 @@
                     <div class="mt-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-6 text-white">
                         <h3 class="text-xl font-bold mb-4">Limited Time Offer!</h3>
                         <p class="mb-4">Get 20% off your first Roof Wash or Full House Wash when you book online!</p>
-                        <a href="#" class="inline-block bubble-button bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full transition duration-300">
+                        <a href="booking.html" class="inline-block bubble-button bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full transition duration-300">
                             Book Now & Save
                         </a>
                     </div>
@@ -1126,7 +1178,7 @@
 
     <!-- Floating Book Now Button (Mobile Only) -->
     <div class="fixed bottom-6 right-6 md:hidden z-50">
-        <a href="#contact" class="bubble-button bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold h-16 w-16 rounded-full flex items-center justify-center shadow-xl transition">
+        <a href="booking.html" class="bubble-button bg-blue-600 hover:bg-blue-700 text-white text-lg font-bold h-16 w-16 rounded-full flex items-center justify-center shadow-xl transition">
             <span class="block sm:hidden">Book</span>
             <span class="hidden sm:block">Book Now</span>
         </a>
@@ -1468,7 +1520,7 @@
             }
         }
         
-        // Before/After Slider Functionality
+        // Enhanced Before/After Slider Functionality with Smooth Animations
         function initBeforeAfterSliders() {
             const slider = document.getElementById('slider-handle');
             const beforeOverlay = document.getElementById('before-overlay');
@@ -1476,71 +1528,160 @@
             const container = slider.parentElement;
             
             let isDragging = false;
+            let animationFrame = null;
             
-            function updateSlider(clientX) {
-                const rect = container.getBoundingClientRect();
-                const x = clientX - rect.left;
-                const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            // Smooth update function with requestAnimationFrame
+            function smoothUpdateSlider(clientX) {
+                if (animationFrame) {
+                    cancelAnimationFrame(animationFrame);
+                }
                 
-                // Update overlay width to match slider position exactly
-                beforeOverlay.style.width = percentage + '%';
-                
-                // Update slider position
-                slider.style.left = percentage + '%';
+                animationFrame = requestAnimationFrame(() => {
+                    const rect = container.getBoundingClientRect();
+                    const x = clientX - rect.left;
+                    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+                    
+                    // Apply smooth transitions when dragging
+                    if (isDragging) {
+                        beforeOverlay.style.transition = 'none';
+                        slider.style.transition = 'none';
+                    } else {
+                        beforeOverlay.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                        slider.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    }
+                    
+                    // Update overlay width to match slider position exactly
+                    beforeOverlay.style.width = percentage + '%';
+                    
+                    // Update slider position
+                    slider.style.left = percentage + '%';
+                });
             }
             
-            // Mouse events
+            // Enhanced mouse events
             slider.addEventListener('mousedown', (e) => {
                 isDragging = true;
+                slider.style.cursor = 'grabbing';
+                document.body.style.userSelect = 'none';
                 e.preventDefault();
             });
             
             document.addEventListener('mousemove', (e) => {
                 if (isDragging) {
-                    updateSlider(e.clientX);
+                    smoothUpdateSlider(e.clientX);
                 }
             });
             
             document.addEventListener('mouseup', () => {
-                isDragging = false;
+                if (isDragging) {
+                    isDragging = false;
+                    slider.style.cursor = 'ew-resize';
+                    document.body.style.userSelect = '';
+                    
+                    // Re-enable smooth transitions
+                    beforeOverlay.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    slider.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                }
             });
             
-            // Touch events for mobile
+            // Enhanced touch events for mobile with better performance
             slider.addEventListener('touchstart', (e) => {
                 isDragging = true;
                 e.preventDefault();
-            });
+            }, { passive: false });
             
             document.addEventListener('touchmove', (e) => {
                 if (isDragging) {
-                    updateSlider(e.touches[0].clientX);
+                    e.preventDefault();
+                    smoothUpdateSlider(e.touches[0].clientX);
                 }
-            });
+            }, { passive: false });
             
             document.addEventListener('touchend', () => {
-                isDragging = false;
-            });
-            
-            // Click anywhere on the image to move slider
-            container.addEventListener('click', (e) => {
-                if (!isDragging) {
-                    updateSlider(e.clientX);
+                if (isDragging) {
+                    isDragging = false;
+                    
+                    // Re-enable smooth transitions
+                    beforeOverlay.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                    slider.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
                 }
             });
+            
+            // Enhanced click anywhere on the image to move slider with smooth animation
+            container.addEventListener('click', (e) => {
+                if (!isDragging && e.target !== slider) {
+                    // Enable smooth transition for click
+                    beforeOverlay.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    slider.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    
+                    smoothUpdateSlider(e.clientX);
+                }
+            });
+            
+            // Add keyboard support for accessibility
+            slider.addEventListener('keydown', (e) => {
+                const currentLeft = parseFloat(slider.style.left) || 50;
+                let newLeft = currentLeft;
+                
+                switch(e.key) {
+                    case 'ArrowLeft':
+                        newLeft = Math.max(0, currentLeft - 5);
+                        break;
+                    case 'ArrowRight':
+                        newLeft = Math.min(100, currentLeft + 5);
+                        break;
+                    default:
+                        return;
+                }
+                
+                e.preventDefault();
+                
+                // Enable smooth transition for keyboard
+                beforeOverlay.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                slider.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                
+                beforeOverlay.style.width = newLeft + '%';
+                slider.style.left = newLeft + '%';
+            });
+            
+            // Make slider focusable for keyboard navigation
+            slider.setAttribute('tabindex', '0');
+            slider.setAttribute('role', 'slider');
+            slider.setAttribute('aria-label', 'Before and after comparison slider');
         }
         
-        // Change Image Function
+        // Enhanced Change Image Function with smooth transitions
         function changeImage(imageNumber) {
             const beforeImage = document.getElementById('before-image');
             const afterImage = document.getElementById('after-image');
             const serviceTitle = document.getElementById('service-title');
             const serviceDescription = document.getElementById('service-description');
             
-            // Update images
-            beforeImage.src = `Images/Before_${imageNumber}.png`;
-            afterImage.src = `Images/After_${imageNumber}.png`;
+            // Add fade effect during image change
+            beforeImage.style.opacity = '0';
+            afterImage.style.opacity = '0';
             
-            // Update service information
+            setTimeout(() => {
+                // Update images based on image number
+                if (imageNumber <= 4) {
+                    beforeImage.src = `Images/Before_${imageNumber}.png`;
+                    afterImage.src = `Images/After_${imageNumber}.png`;
+                } else if (imageNumber === 5) {
+                    // Fence cleaning: fence1 (before) -> fence2 (after)
+                    beforeImage.src = 'Images/fence1.jpeg';
+                    afterImage.src = 'Images/fence2.jpeg';
+                } else if (imageNumber === 6) {
+                    // Roof washing: roof_washing2 (before) -> roof_washing1 (after)
+                    beforeImage.src = 'Images/roof_washing2.jpg';
+                    afterImage.src = 'Images/roof_washing1.jpg';
+                }
+                
+                // Fade images back in
+                beforeImage.style.opacity = '1';
+                afterImage.style.opacity = '1';
+            }, 150);
+            
+            // Update service information with smooth transition
             const serviceInfo = {
                 1: {
                     title: 'SOFT WASHING',
@@ -1557,13 +1698,29 @@
                 4: {
                     title: 'SURFACE RESTORATION',
                     description: 'Complete surface cleaning and restoration for patios, decks, and outdoor areas'
+                },
+                5: {
+                    title: 'FENCE CLEANING',
+                    description: 'Professional fence cleaning removes dirt, mildew, and weathering to restore your fence'
+                },
+                6: {
+                    title: 'ROOF WASHING',
+                    description: 'Specialized roof washing techniques safely remove stains and restore your roof appearance'
                 }
             };
             
-            serviceTitle.textContent = serviceInfo[imageNumber].title;
-            serviceDescription.textContent = serviceInfo[imageNumber].description;
+            // Smooth text transition
+            serviceTitle.style.opacity = '0';
+            serviceDescription.style.opacity = '0';
             
-            // Update thumbnail styles
+            setTimeout(() => {
+                serviceTitle.textContent = serviceInfo[imageNumber].title;
+                serviceDescription.textContent = serviceInfo[imageNumber].description;
+                serviceTitle.style.opacity = '1';
+                serviceDescription.style.opacity = '1';
+            }, 150);
+            
+            // Update thumbnail styles with smooth transitions
             document.querySelectorAll('.thumbnail-btn').forEach((btn, index) => {
                 if (index + 1 === imageNumber) {
                     btn.classList.add('active', 'border-blue-500', 'opacity-100');
