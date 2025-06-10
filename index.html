@@ -788,10 +788,10 @@
                 <div class="before-after-slider relative rounded-2xl overflow-hidden shadow-2xl bg-white border-4 border-white">
                     <!-- Before/After Images Container -->
                     <div class="relative w-full h-96 md:h-[500px]">
-                        <!-- After Image (Background) -->
+                        <!-- After Image (Background) - Default to roof washing -->
                         <img id="after-image" src="Images/roof_washing1.jpg" alt="After cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                         
-                        <!-- Before Image (Overlay) -->
+                        <!-- Before Image (Overlay) - Default to roof washing -->
                         <div id="before-overlay" class="absolute inset-0 overflow-hidden transition-all duration-150 ease-out" style="width: 50%;">
                             <img id="before-image" src="Images/roof_washing2.jpg" alt="Before cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                         </div>
@@ -823,22 +823,22 @@
                 <!-- Navigation Thumbnails -->
                 <div class="flex justify-center mt-8 space-x-4">
                     <button onclick="changeImage(1)" class="thumbnail-btn active w-20 h-20 rounded-lg overflow-hidden border-3 border-white opacity-100 transition-all duration-300 ease-out hover:scale-105">
-                        <img src="Images/After_1.png" alt="Project 1" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                        <img src="Images/roof_washing1.jpg" alt="Roof Washing" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
                     <button onclick="changeImage(2)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
-                        <img src="Images/After_2.png" alt="Project 2" class="w-full h-full object-cover transition-all duration-300 ease-out">
-                    </button>
-                    <button onclick="changeImage(3)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
-                        <img src="Images/After_3.png" alt="Project 3" class="w-full h-full object-cover transition-all duration-300 ease-out">
-                    </button>
-                    <button onclick="changeImage(4)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
-                        <img src="Images/After_4.png" alt="Project 4" class="w-full h-full object-cover transition-all duration-300 ease-out">
-                    </button>
-                    <button onclick="changeImage(5)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
                         <img src="Images/fence2.jpeg" alt="Fence Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
+                    <button onclick="changeImage(3)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/After_3.png" alt="Soft Washing" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                    </button>
+                    <button onclick="changeImage(4)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/After_2.png" alt="Driveway Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                    </button>
+                    <button onclick="changeImage(5)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
+                        <img src="Images/patio_2.png" alt="Surface Restoration" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                    </button>
                     <button onclick="changeImage(6)" class="thumbnail-btn w-20 h-20 rounded-lg overflow-hidden border-3 border-gray-300 opacity-70 hover:opacity-100 transition-all duration-300 ease-out hover:scale-105">
-                        <img src="Images/roof_washing1.jpg" alt="Roof Washing" class="w-full h-full object-cover transition-all duration-300 ease-out">
+                        <img src="Images/roof1.jpeg" alt="Roof Cleaning" class="w-full h-full object-cover transition-all duration-300 ease-out">
                     </button>
                 </div>
             </div>
@@ -1662,18 +1662,31 @@
             afterImage.style.opacity = '0';
             
             setTimeout(() => {
-                // Update images based on image number
-                if (imageNumber <= 4) {
-                    beforeImage.src = `Images/Before_${imageNumber}.png`;
-                    afterImage.src = `Images/After_${imageNumber}.png`;
-                } else if (imageNumber === 5) {
-                    // Fence cleaning: fence1 (before) -> fence2 (after)
-                    beforeImage.src = 'Images/fence1.jpeg';
-                    afterImage.src = 'Images/fence2.jpeg';
-                } else if (imageNumber === 6) {
+                // Update images based on image number with correct mappings
+                if (imageNumber === 1) {
                     // Roof washing: roof_washing2 (before) -> roof_washing1 (after)
                     beforeImage.src = 'Images/roof_washing2.jpg';
                     afterImage.src = 'Images/roof_washing1.jpg';
+                } else if (imageNumber === 2) {
+                    // Fence cleaning: fence1 (before) -> fence2 (after)
+                    beforeImage.src = 'Images/fence1.jpeg';
+                    afterImage.src = 'Images/fence2.jpeg';
+                } else if (imageNumber === 3) {
+                    // Soft washing: before_3 (before) -> after_3 (after)
+                    beforeImage.src = 'Images/Before_3.png';
+                    afterImage.src = 'Images/After_3.png';
+                } else if (imageNumber === 4) {
+                    // Driveway cleaning: before_2 (before) -> after_2 (after)
+                    beforeImage.src = 'Images/Before_2.png';
+                    afterImage.src = 'Images/After_2.png';
+                } else if (imageNumber === 5) {
+                    // Surface Restoration: patio_1 (before) -> patio_2 (after)
+                    beforeImage.src = 'Images/patio_1.png';
+                    afterImage.src = 'Images/patio_2.png';
+                } else if (imageNumber === 6) {
+                    // Roof Cleaning: roof2 (before) -> roof1 (after)
+                    beforeImage.src = 'Images/roof2.jpeg';
+                    afterImage.src = 'Images/roof1.jpeg';
                 }
                 
                 // Fade images back in
@@ -1684,28 +1697,28 @@
             // Update service information with smooth transition
             const serviceInfo = {
                 1: {
-                    title: 'SOFT WASHING',
-                    description: 'Professional soft washing removes dirt, mildew, and stains without damaging your property'
+                    title: 'ROOF WASHING',
+                    description: 'Expert roof washing using specialized low-pressure techniques to safely remove algae, moss, black streaks, and stains while protecting your roof materials'
                 },
                 2: {
-                    title: 'ROOF CLEANING',
-                    description: 'Safe roof cleaning removes algae, moss, and black streaks using low-pressure techniques'
+                    title: 'FENCE CLEANING',
+                    description: 'Professional fence restoration service that removes years of dirt, mildew, weathering, and discoloration to bring back your fence\'s original beauty'
                 },
                 3: {
-                    title: 'DRIVEWAY CLEANING',
-                    description: 'Pressure washing restores driveways and concrete surfaces to their original condition'
+                    title: 'SOFT WASHING',
+                    description: 'Gentle yet effective soft washing technique that safely removes dirt, mildew, algae, and organic stains from delicate surfaces without causing damage'
                 },
                 4: {
-                    title: 'SURFACE RESTORATION',
-                    description: 'Complete surface cleaning and restoration for patios, decks, and outdoor areas'
+                    title: 'DRIVEWAY CLEANING',
+                    description: 'High-pressure cleaning that transforms oil-stained, dirty driveways and concrete surfaces back to their pristine original condition'
                 },
                 5: {
-                    title: 'FENCE CLEANING',
-                    description: 'Professional fence cleaning removes dirt, mildew, and weathering to restore your fence'
+                    title: 'SURFACE RESTORATION',
+                    description: 'Complete outdoor surface renewal for patios, decks, walkways, and outdoor living areas using professional-grade cleaning techniques'
                 },
                 6: {
-                    title: 'ROOF WASHING',
-                    description: 'Specialized roof washing techniques safely remove stains and restore your roof appearance'
+                    title: 'ROOF CLEANING',
+                    description: 'Comprehensive roof cleaning service that eliminates harmful algae, moss growth, and unsightly black streaks using safe, proven methods'
                 }
             };
             
