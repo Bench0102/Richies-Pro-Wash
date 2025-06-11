@@ -230,188 +230,6 @@
             width: 100%;
         }
         
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-            transform: scale(0.8) translateY(50px);
-            transition: all 0.3s ease;
-        }
-        
-        .modal-overlay.active .modal-content {
-            transform: scale(1) translateY(0);
-        }
-        
-        .modal-header {
-            background: linear-gradient(135deg, #121F41 0%, #1e3a8a 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 20px 20px 0 0;
-            text-align: center;
-            position: relative;
-        }
-        
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        
-        .modal-close:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-        
-        .modal-body {
-            padding: 2rem;
-            color: #333;
-        }
-        
-        .modal-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .modal-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal-features {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-        
-        .modal-features li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-        }
-        
-        .modal-features li::before {
-            content: '✅';
-            margin-right: 0.8rem;
-            font-size: 1.2rem;
-        }
-        
-        .modal-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .modal-btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .modal-btn-primary {
-            background: linear-gradient(135deg, #121F41 0%, #1e3a8a 100%);
-            color: white;
-        }
-        
-        .modal-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(18, 31, 65, 0.3);
-        }
-        
-        .modal-btn-secondary {
-            background: linear-gradient(135deg, #4FC3F7 0%, #29B6F6 100%);
-            color: white;
-        }
-        
-        .modal-btn-secondary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(79, 195, 247, 0.3);
-        }
-        
-        /* Bubble accent */
-        .modal-header::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 100px;
-            height: 100px;
-            background: rgba(79, 195, 247, 0.2);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .modal-header::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 60px;
-            height: 60px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-        
-        @media (min-width: 640px) {
-            .modal-buttons {
-                flex-direction: row;
-            }
-            
-            .modal-title {
-                font-size: 2.2rem;
-            }
-        }
-        
         /* Active navigation link styling */
         nav a.active {
             color: #4FC3F7 !important;
@@ -457,42 +275,6 @@
     </style>
 </head>
 <body class="bg-white text-gray-800">
-    <!-- Discount Modal -->
-    <div id="discountModal" class="modal-overlay">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="modal-close" onclick="closeModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-                <h2 class="modal-title">
-                    🎉 Hey Savannah! Get 20% Off Your Next House or Roof Wash! 🎉
-                </h2>
-            </div>
-            <div class="modal-body">
-                <p class="modal-text">
-                    I'm one of the owners of Richies Pro Wash, and we're excited to offer all Savannah residents an exclusive 20% discount on Roof Washes and House Washes for a limited time — just leave us a 5-star Google review in return!
-                </p>
-                <p class="modal-text">
-                    We recently went full-time and have been blessed by your support. This is our way of saying thank you 🙌
-                </p>
-                <ul class="modal-features">
-                    <li>Professional, safe, and friendly service</li>
-                    <li>Locally owned in Savannah, GA</li>
-                    <li>Fully insured and experienced team</li>
-                </ul>
-                <div class="modal-buttons">
-                    <a href="tel:+19126759231" class="modal-btn modal-btn-primary">
-                        <i class="fas fa-phone mr-2"></i>
-                        Claim Your Discount – Call Now
-                    </a>
-                    <a href="https://www.google.com/maps/place/Richies+Pro+Wash/@32.008287,-81.3261389,47781m/data=!3m2!1e3!4b1!4m6!3m5!1s0xa3aa2de546ee07b9:0xaa3dc9f5cb54235!8m2!3d32.0083935!4d-81.161328!16s%2Fg%2F11v5c1hgvg?entry=ttu&g_ep=EgoyMDI1MDUyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="modal-btn modal-btn-secondary">
-                        <i class="fab fa-google mr-2"></i>
-                        Leave a Review on Google
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Navigation Bar -->
     <header class="fixed w-full bg-[#121F41] text-white shadow-lg z-50">
         <div class="container mx-auto px-4 py-3">
@@ -540,8 +322,8 @@
                         <a href="booking.html" class="bubble-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">
                             Book Now
                         </a>
-                        <a href="#contact" class="bubble-button bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">
-                            Get 20% Off Roof & House Washes!
+                        <a href="#services" class="bubble-button bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-8 rounded-full text-lg transition duration-300 text-center">
+                            Explore our services
                         </a>
                     </div>
                 </div>
@@ -963,7 +745,7 @@
             
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="lg:w-1/2">
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-md">
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                         <h3 class="text-xl font-bold mb-6 text-[#121F41]">Contact Information</h3>
                         
                         <div class="space-y-6">
@@ -1035,26 +817,26 @@
                 </div>
                 
                 <div class="lg:w-1/2">
-                    <div class="bg-gray-50 rounded-xl p-8 shadow-md">
-                        <h3 class="text-xl font-bold mb-6 text-[#121F41]">Send Us a Message</h3>
+                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 shadow-2xl hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] transition-shadow duration-300 text-white">
+                        <h3 class="text-xl font-bold mb-6 text-white">Send Us a Message</h3>
                         
                         <form>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label for="name" class="block text-sm font-medium text-white mb-1">Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
                                 </div>
                                 <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label for="email" class="block text-sm font-medium text-white mb-1">Email</label>
+                                    <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
                                 </div>
                                 <div>
-                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                    <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label for="phone" class="block text-sm font-medium text-white mb-1">Phone</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
                                 </div>
                                 <div>
-                                    <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
-                                    <select id="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <label for="service" class="block text-sm font-medium text-white mb-1">Service Needed</label>
+                                    <select id="service" class="w-full px-4 py-3 rounded-lg text-gray-700 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent">
                                         <option value="">Select a service</option>
                                         <option value="house">House Washing</option>
                                         <option value="roof">Roof Washing</option>
@@ -1066,25 +848,18 @@
                             </div>
                             
                             <div class="mt-6">
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                <label for="message" class="block text-sm font-medium text-white mb-1">Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent"></textarea>
                             </div>
                             
                             <div class="mt-8">
-                                <button type="submit" class="w-full bubble-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded-lg transition duration-300">
+                                <button type="submit" class="w-full bubble-button bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-6 rounded-lg transition duration-300">
                                     Send Message
                                 </button>
                             </div>
                         </form>
                     </div>
                     
-                    <div class="mt-6 bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-6 text-white">
-                        <h3 class="text-xl font-bold mb-4">Limited Time Offer!</h3>
-                        <p class="mb-4">Get 20% off your first Roof Wash or Full House Wash when you book online!</p>
-                        <a href="booking.html" class="inline-block bubble-button bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-3 px-6 rounded-full transition duration-300">
-                            Book Now & Save
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1415,22 +1190,6 @@
             });
         });
         
-        // Modal Functions
-        function showModal() {
-            const modal = document.getElementById('discountModal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-        
-        function closeModal() {
-            const modal = document.getElementById('discountModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
-            
-            // Set session storage to prevent showing again
-            sessionStorage.setItem('modalShown', 'true');
-        }
-        
         // Initialize everything when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             createBubbles();
@@ -1440,34 +1199,9 @@
             // Show the first service by default
             showService('house-washing');
             
-            // Check if modal was already shown in this session
-            if (!sessionStorage.getItem('modalShown')) {
-                // Delay showing modal slightly for better UX
-                setTimeout(showModal, 1000);
-            }
-            
             // Recreate bubbles on resize for better positioning
             window.addEventListener('resize', createBubbles);
         });
-        
-        // Close modal when clicking outside of it
-        document.getElementById('discountModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
-</body>
-</html>
-
-    <script>
         function showService(serviceId) {
             // Hide all service content
             const allServices = document.querySelectorAll('.service-content');
@@ -1729,3 +1463,5 @@
             });
         }
     </script>
+</body>
+</html>
