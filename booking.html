@@ -247,7 +247,7 @@
                         <h4 class="font-semibold text-[#121F41] mb-3">Includes:</h4>
                         <ul class="space-y-2 text-sm text-gray-700">
                             <li><i class="fas fa-check text-green-500 mr-2"></i>Oil stain removal</li>
-                            <li><i class="fas fa-check text-green-500 mr-2"></i>Concrete restoration</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Rust Removal</li>
                             <li><i class="fas fa-check text-green-500 mr-2"></i>Walkway cleaning</li>
                         </ul>
                     </div>
@@ -346,106 +346,146 @@
                         <h2 class="text-3xl font-bold text-center">
                             <i class="fas fa-calendar-alt mr-3"></i>Book Your <span id="selected-service-name">Service</span>
                         </h2>
-                        <p class="text-center mt-2 text-blue-200">Fill out the details below to schedule your appointment</p>
+                        <p class="text-center mt-2 text-blue-200">Please check our details below to schedule your appointment</p>
                     </div>
                     
                     <div class="p-8">
-                        <form id="booking-form" class="space-y-6">
-                            <!-- Service Summary -->
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h3 class="font-bold text-[#121F41] mb-2">Service Summary</h3>
-                                <div class="flex justify-between items-center">
-                                    <span id="service-summary">House Washing</span>
-                                    <span class="font-bold text-blue-600" id="service-price">$150</span>
+                        <!-- Service Summary -->
+                        <div class="bg-blue-50 p-4 rounded-lg mb-6">
+                            <h3 class="font-bold text-[#121F41] mb-2">Service Summary</h3>
+                            <div class="flex justify-between items-center">
+                                <span id="service-summary">House Washing</span>
+                                <span class="font-bold text-blue-600" id="service-price">$150</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Information Card -->
+                        <div class="bg-gradient-to-br from-[#121F41] via-[#1e3a8a] to-[#0D47A1] text-white rounded-2xl p-8 shadow-2xl border border-white/10 backdrop-blur-sm">
+                            <div class="text-center mb-8">
+                                <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full p-4 w-20 h-20 mx-auto mb-4 shadow-lg">
+                                    <i class="fas fa-phone-alt text-[#121F41] text-3xl"></i>
                                 </div>
+                                <h3 class="text-4xl font-bold mb-3 bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent">
+                                    Let's Get Started!
+                                </h3>
+                                <p class="text-blue-200 text-xl font-medium">Contact us now to schedule your professional cleaning service</p>
+                                <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto mt-4 rounded-full"></div>
                             </div>
                             
-                            <!-- Personal Information -->
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-[#121F41] font-medium mb-2">First Name *</label>
-                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-[#121F41] font-medium mb-2">Last Name *</label>
-                                    <input type="text" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                            </div>
-                            
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-[#121F41] font-medium mb-2">Email *</label>
-                                    <input type="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-[#121F41] font-medium mb-2">Phone Number *</label>
-                                    <input type="tel" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                            </div>
-                            
-                            <!-- Address -->
-                            <div>
-                                <label class="block text-[#121F41] font-medium mb-2">Service Address *</label>
-                                <input type="text" required placeholder="Street Address" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-3">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                                    <input type="text" required placeholder="City" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    <input type="text" required placeholder="State" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    <input type="text" required placeholder="ZIP Code" class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                            </div>
-                            
-                            <!-- Calendar -->
-                            <div>
-                                <label class="block text-[#121F41] font-medium mb-4">Preferred Date *</label>
-                                <div class="calendar-container">
-                                    <div class="flex justify-between items-center mb-4">
-                                        <button type="button" id="prev-month" class="p-2 text-[#121F41] hover:bg-blue-100 rounded">
-                                            <i class="fas fa-chevron-left"></i>
-                                        </button>
-                                        <h3 id="calendar-month" class="text-lg font-bold text-[#121F41]"></h3>
-                                        <button type="button" id="next-month" class="p-2 text-[#121F41] hover:bg-blue-100 rounded">
-                                            <i class="fas fa-chevron-right"></i>
-                                        </button>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                                <!-- Phone & Email -->
+                                <div class="space-y-6 flex flex-col">
+                                    <div class="bg-white/15 backdrop-blur-md rounded-xl p-6 hover:bg-white/25 transition-all duration-300 transform hover:scale-105 border border-white/20 shadow-lg flex-1">
+                                        <div class="flex items-center mb-4">
+                                            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full p-3 mr-4 shadow-lg">
+                                                <i class="fas fa-phone text-[#121F41] text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-xl">Call Us Now</h4>
+                                                <p class="text-blue-200">Speak directly with our team</p>
+                                            </div>
+                                        </div>
+                                        <a href="tel:9126759231" class="text-2xl font-bold hover:text-yellow-300 transition duration-300 block">
+                                            (912) 675-9231
+                                        </a>
+                                        <div class="mt-4 pt-4 border-t border-white/20">
+                                            <p class="text-blue-200 text-sm">Available during business hours for immediate assistance and quotes</p>
+                                        </div>
                                     </div>
-                                    <div class="calendar" id="calendar"></div>
+                                    
+                                    <div class="bg-white/15 backdrop-blur-md rounded-xl p-6 hover:bg-white/25 transition-all duration-300 transform hover:scale-105 border border-white/20 shadow-lg flex-1">
+                                        <div class="flex items-center mb-4">
+                                            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full p-3 mr-4 shadow-lg">
+                                                <i class="fas fa-envelope text-[#121F41] text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-xl">Email Us</h4>
+                                                <p class="text-blue-200">Send us your details</p>
+                                            </div>
+                                        </div>
+                                        <a href="mailto:richiesprowash@gmail.com" class="text-lg font-semibold hover:text-yellow-300 transition duration-300 break-all">
+                                            richiesprowash@gmail.com
+                                        </a>
+                                        <div class="mt-4 pt-4 border-t border-white/20">
+                                            <p class="text-blue-200 text-sm">Send us your project details and we'll get back to you within 24 hours</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Social Media & Hours -->
+                                <div class="space-y-6 flex flex-col">
+                                    <div class="bg-white/15 backdrop-blur-md rounded-xl p-6 hover:bg-white/25 transition-all duration-300 transform hover:scale-105 border border-white/20 shadow-lg flex-1">
+                                        <div class="flex items-center mb-4">
+                                            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full p-3 mr-4 shadow-lg">
+                                                <i class="fas fa-share-alt text-[#121F41] text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-xl">Follow Us</h4>
+                                                <p class="text-blue-200">Stay connected with us</p>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-3">
+                                            <a href="https://www.facebook.com/richards.columbus.7" target="_blank" class="flex items-center text-lg hover:text-yellow-300 transition duration-300 group">
+                                                <i class="fab fa-facebook text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                                                <span>Facebook</span>
+                                            </a>
+                                            <a href="https://www.instagram.com/richies_pro_wash/" target="_blank" class="flex items-center text-lg hover:text-yellow-300 transition duration-300 group">
+                                                <i class="fab fa-instagram text-2xl mr-3 group-hover:scale-110 transition-transform"></i>
+                                                <span>Instagram</span>
+                                            </a>
+                                        </div>
+                                        <div class="mt-4 pt-4 border-t border-white/20">
+                                            <p class="text-blue-200 text-sm">Follow us for before/after photos and cleaning tips</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="bg-white/15 backdrop-blur-md rounded-xl p-6 hover:bg-white/25 transition-all duration-300 transform hover:scale-105 border border-white/20 shadow-lg flex-1">
+                                        <div class="flex items-center mb-4">
+                                            <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full p-3 mr-4 shadow-lg">
+                                                <i class="fas fa-clock text-[#121F41] text-xl"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-xl">Business Hours</h4>
+                                                <p class="text-blue-200">When we're available</p>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-2 text-lg">
+                                            <div class="flex justify-between">
+                                                <span class="font-semibold">Mon-Fri:</span>
+                                                <span class="text-green-300 font-medium">8 AM – 5 PM</span>
+                                            </div>
+                                            <div class="flex justify-between">
+                                                <span class="font-semibold">Sat-Sun:</span>
+                                                <span class="text-red-300 font-medium">Closed</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 pt-4 border-t border-white/20">
+                                            <p class="text-blue-200 text-sm">Emergency services available by appointment</p>
+                                        </div>
                                 </div>
                             </div>
-                            
-                            <!-- Time Preference -->
-                            <div>
-                                <label class="block text-[#121F41] font-medium mb-2">Preferred Time</label>
-                                <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    <option>Morning (8:00 AM - 12:00 PM)</option>
-                                    <option>Afternoon (12:00 PM - 5:00 PM)</option>
-                                    <option>No Preference</option>
-                                </select>
                             </div>
                             
-                            <!-- Special Instructions -->
-                            <div>
-                                <label class="block text-[#121F41] font-medium mb-2">Special Instructions</label>
-                                <textarea rows="4" placeholder="Any special instructions or areas of concern..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
-                            </div>
-                            
-                            <!-- Discount Notice -->
-                            <div class="bg-yellow-50 border border-yellow-200 p-4 rounded-lg">
-                                <div class="flex items-center">
-                                    <i class="fas fa-star text-yellow-500 mr-2"></i>
-                                    <span class="font-bold text-yellow-800">Special Offer: Get 20% off House & Roof Washes!</span>
+                            <!-- Call to Action -->
+                            <div class="text-center mt-10 pt-8 border-t border-white/30">
+                                <p class="text-blue-200 mb-6 text-lg font-medium">Ready to transform your property? Contact us today for a free quote!</p>
+                                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                    <a href="tel:9126759231" class="bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-[#121F41] py-4 px-10 rounded-full font-bold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                                        <i class="fas fa-phone mr-2"></i>Call Now
+                                    </a>
+                                    <a href="mailto:richiesprowash@gmail.com" class="bg-white/20 hover:bg-white/30 text-white py-4 px-10 rounded-full font-bold transition-all duration-300 hover:scale-105 border border-white/30 hover:border-white/50 shadow-lg">
+                                        <i class="fas fa-envelope mr-2"></i>Send Email
+                                    </a>
                                 </div>
-                                <p class="text-yellow-700 mt-1 text-sm">Just leave us a 5-star Google review after service completion.</p>
                             </div>
-                            
-                            <!-- Submit Buttons -->
-                            <div class="flex flex-col sm:flex-row gap-4 pt-6">
-                                <button type="button" onclick="goBackToServices()" class="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-3 px-6 rounded-full font-bold transition duration-300">
-                                    <i class="fas fa-arrow-left mr-2"></i>Back to Services
-                                </button>
-                                <button type="submit" class="flex-1 bg-[#121F41] hover:bg-[#0D47A1] text-white py-3 px-6 rounded-full font-bold transition duration-300">
-                                    <i class="fas fa-check mr-2"></i>Book Service
-                                </button>
-                            </div>
-                        </form>
+                        </div>
+                        
+                        <!-- Back Button -->
+                        <div class="text-center mt-6">
+                            <button type="button" onclick="goBackToServices()" class="bg-gray-600 hover:bg-gray-700 text-white py-3 px-8 rounded-full font-bold transition duration-300">
+                                <i class="fas fa-arrow-left mr-2"></i>Back to Services
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
